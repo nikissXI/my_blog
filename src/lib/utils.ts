@@ -1,0 +1,13 @@
+export function formatDate(date: Date): string {
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const d = String(date.getDate()).padStart(2, '0')
+  const h = String(date.getHours()).padStart(2, '0')
+  const min = String(date.getMinutes()).padStart(2, '0')
+  const s = String(date.getSeconds()).padStart(2, '0')
+  return `${y}年${m}月${d}日 ${h}:${min}:${s}`
+}
+
+export function getCategoryName(categoryId: string, categories: Record<string, string>): string {
+  return categories[categoryId] || categoryId
+}

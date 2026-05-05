@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import Pagination from "../components/Pagination.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { PAGE_SIZE, CATEGORIES } from "../lib/constants";
+import { getCategoryName } from "../lib/utils";
+
+const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const url = new URL(Astro.request.url);
+const pageParam = Number(url.searchParams.get("page") || "1");
+const keywordParam = url.searchParams.get("keyword")?.trim() || "";
+const currentPage = pageParam > 0 ? pageParam : 1;
+
+let filteredPosts: CollectionEntry<"posts">[] = sortedPosts;
+let pageTitle = "";
+
+if (keywordParam) {
+  const kw = keywordParam.toLowerCase();
+  filteredPosts = sortedPosts.filter(
+    (post) =>
+      post.data.title.toLowerCase().includes(kw) ||
+      post.data.keywords.toLowerCase().includes(kw) ||
+      post.data.summary.toLowerCase().includes(kw) ||
+      post.data.category.toLowerCase().includes(kw) ||
+      getCategoryName(post.data.category, CATEGORIES)
+        .toLowerCase()
+        .includes(kw),
+  );
+  pageTitle = `搜索: ${keywordParam}`;
+}
+
+const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE);
+const safePage = Math.min(currentPage, Math.max(totalPages, 1));
+const start = (safePage - 1) * PAGE_SIZE;
+const pagePosts = filteredPosts.slice(start, start + PAGE_SIZE);
+
+const keywordQuery = keywordParam
+  ? `&keyword=${encodeURIComponent(keywordParam)}`
+  : "";
+const baseUrl =
+  Astro.url.pathname +
+  (keywordQuery ? `?keyword=${encodeURIComponent(keywordParam)}` : "");
+---
+
+<BaseLayout title={pageTitle || undefined}>
+  {
+    keywordParam && (
+      <div style="margin-bottom: 30px; padding: 10px 15px; background: #f8f9fa; border-radius: 4px;">
+        <>
+          <strong>搜索: </strong>
+          <span class="search-highlight">{keywordParam}</span>
+        </>
+        <span style="margin-left: 10px; color: #8b95a5;">
+          共找到 {filteredPosts.length} 篇文章
+        </span>
+        <a href="/" style="float: right; color: #007bff;">
+          &larr; 返回首页
+        </a>
+      </div>
+    )
+  }
+
+  {
+    pagePosts.length === 0 ? (
+      <div class="empty-state">
+        <p>暂无文章</p>
+        {keywordParam && (
+          <p>没有找到包含 "{keywordParam}" 的文章，请尝试其他关键词。</p>
+        )}
+      </div>
+    ) : (
+      pagePosts.map((post) => <ArticleCard post={post} />)
+    )
+  }
+
+  <Pagination
+    currentPage={safePage}
+    totalPages={totalPages}
+    baseUrl={baseUrl}
+  />
+</BaseLayout>

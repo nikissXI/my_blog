@@ -1,0 +1,29 @@
+---
+import { formatDate, getCategoryName } from '../lib/utils'
+import { CATEGORIES } from '../lib/constants'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+const { data } = post
+---
+<article class="lyear-arc">
+  <div class="arc-header">
+    <h2 class="arc-title">
+      <a href={`/posts/${post.id}`}>{data.title}</a>
+    </h2>
+    <ul class="arc-meta">
+      <li><i>📅</i> {formatDate(data.date)}</li>
+      <li><i>📁</i> {getCategoryName(data.category, CATEGORIES)}</li>
+      {data.keywords && (
+        <li><i>🏷️</i> {data.keywords}</li>
+      )}
+    </ul>
+  </div>
+  <div class="arc-synopsis" style="color: rgba(0,0,0,0.5);">
+    <p>{data.summary}</p>
+  </div>
+</article>

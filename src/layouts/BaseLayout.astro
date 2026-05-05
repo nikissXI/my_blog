@@ -1,0 +1,64 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  showSidebar?: boolean;
+}
+
+const { title, description, showSidebar = true } = Astro.props;
+const pageTitle = title ? `${title} - N的小屋` : "N的小屋";
+const pageDesc = description || "nothing for now";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{pageTitle}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={pageDesc} />
+    <meta name="keywords" content="个人博客" />
+    <meta name="author" content="nikiss" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <Header />
+    <div class="lyear-wrapper">
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class={showSidebar ? "col-xl-8" : "col-xl-12"}>
+              <slot />
+            </div>
+            {showSidebar && <Sidebar />}
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
+
+<script>
+  const toggler = document.querySelector(".navbar-toggler");
+  const nav = document.querySelector("#navigation");
+  if (toggler && nav) {
+    toggler.addEventListener("click", () => {
+      nav.classList.toggle("show");
+      toggler.querySelector(".lyear-hamburger")?.classList.toggle("is-active");
+    });
+  }
+
+  const form = document.querySelector(".lyear-search-form");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = form.querySelector("input") as HTMLInputElement;
+    if (input?.value.trim()) {
+      window.location.href = `/?keyword=${encodeURIComponent(input.value.trim())}`;
+    }
+  });
+</script>

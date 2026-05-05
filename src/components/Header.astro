@@ -1,0 +1,99 @@
+---
+import { CATEGORIES } from "../lib/constants";
+
+const categories = Object.entries(CATEGORIES);
+---
+
+<header
+  class="lyear-header text-center"
+  style="background-image:url(/images/left-bg.jpg);"
+>
+  <div class="lyear-header-container">
+    <div class="lyear-mask"></div>
+    <h1 class="lyear-blogger">
+      <a href="/">N的小屋</a>
+    </h1>
+    <nav class="navbar">
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-label="Toggle navigation"
+      >
+        <div class="lyear-hamburger">
+          <div class="hamburger-inner"></div>
+        </div>
+      </button>
+
+      <div id="navigation">
+        <div class="profile-section">
+          <img
+            class="profile-image"
+            src="/images/touxiang.jpg"
+            width="120"
+            height="120"
+            alt="nikiss"
+          />
+          <div class="lyear-sentence">越努力，越幸运</div>
+          <hr />
+        </div>
+
+        <ul class="navbar-nav">
+          {
+            categories.map(([id, name]) => (
+              <li>
+                <a class="nav-link" href={`/category/${id}`}>
+                  {name}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a class="nav-link" href="/about">关于我</a>
+          </li>
+        </ul>
+
+        <div class="lyear-search-form-container">
+          <form class="lyear-search-form">
+            <input
+              type="text"
+              id="keyword"
+              name="keyword"
+              class="form-control"
+              placeholder="搜索关键词"
+            />
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  hr {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .lyear-blogger {
+    position: relative;
+    z-index: 11;
+  }
+
+  .profile-section {
+    /* width: 100%; */
+    /* max-width: 328px; */
+    text-align: center;
+  }
+
+  #navigation {
+    width: 100%;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    list-style: none;
+    width: 100%;
+  }
+</style>
