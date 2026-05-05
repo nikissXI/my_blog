@@ -26,17 +26,16 @@ const pageDesc = description || "nothing for now";
     <meta name="author" content="nikiss" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   </head>
+
   <body>
     <Header />
     <div class="lyear-wrapper">
       <section>
-        <div class="container">
-          <div class="row">
-            <div class={showSidebar ? "col-xl-8" : "col-xl-12"}>
-              <slot />
-            </div>
-            {showSidebar && <Sidebar />}
+        <div class="container row">
+          <div class="lyear-article">
+            <slot />
           </div>
+          <Sidebar />
         </div>
       </section>
     </div>

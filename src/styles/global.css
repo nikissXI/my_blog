@@ -36,7 +36,7 @@ a:focus {
   left: 0;
   top: 0;
   height: 100vh;
-  width: 300px;
+  width: 260px;
   background-repeat: no-repeat;
   background-color: #3d3d3d;
   background-size: cover;
@@ -50,14 +50,12 @@ a:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: top;
   position: relative;
   z-index: 1;
 }
 
 .lyear-header .navbar {
   padding: 2rem 3rem;
-  position: relative;
   z-index: 11;
   width: 100%;
 }
@@ -183,27 +181,9 @@ a:focus {
   color: rgba(255, 255, 255, 1);
 }
 
-.lyear-search-form-container {
-  margin-top: 1rem;
-}
-
-.lyear-search-form .form-control {
-  border-radius: 100px;
-  background-color: rgba(255, 255, 255, 0.125);
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  color: rgba(0, 0, 0, 0.7);
-  padding: 0.375rem 0.75rem;
-  font-size: 14px;
-  outline: none;
-}
-
-.lyear-search-form .form-control::placeholder {
-  color: rgba(0, 0, 0, 0.5);
-}
-
 /* ======== Right Content ======== */
 .lyear-wrapper {
-  margin-left: 300px;
+  margin-left: 260px;
   padding: 1.5rem 3rem 0;
   min-height: 100vh;
 }
@@ -215,16 +195,6 @@ a:focus {
 .row {
   display: flex;
   flex-wrap: wrap;
-}
-
-.col-xl-8 {
-  flex: 0 0 66.666%;
-  max-width: 66.666%;
-}
-
-.col-xl-4 {
-  flex: 0 0 33.333%;
-  max-width: 33.333%;
 }
 
 /* ======== Article Cards ======== */
@@ -344,7 +314,13 @@ a:focus {
 
 /* ======== Sidebar Widgets ======== */
 .lyear-sidebar {
-  padding-left: 30px;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.lyear-article {
+  flex: 0 0 75%;
+  max-width: 75%;
 }
 
 .widget {
@@ -454,11 +430,19 @@ a:focus {
   }
 
   .lyear-header .navbar {
-    padding: 1rem;
+    padding: 0rem 5rem;
   }
 
   .lyear-header .navbar-toggler {
     display: inline-block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 12;
+  }
+
+  .lyear-blogger {
+    margin: 10px 0;
   }
 
   #navigation {
@@ -479,8 +463,7 @@ a:focus {
 }
 
 @media only screen and (max-width: 1200px) {
-  .col-xl-8,
-  .col-xl-4 {
+  .lyear-article {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -488,14 +471,16 @@ a:focus {
   .lyear-sidebar {
     padding-left: 0;
     margin-top: 1.5rem;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 
-@media only screen and (max-width: 991px) {
+/* @media only screen and (max-width: 991px) {
   .lyear-header .lyear-blogger {
     width: 100%;
   }
-}
+} */
 
 @media only screen and (max-width: 768px) {
   .lyear-wrapper {
