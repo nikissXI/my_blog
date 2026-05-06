@@ -1,15 +1,15 @@
 ---
 import Header from "../components/Header.astro";
-import Sidebar from "../components/Sidebar.astro";
+import Bottombar from "../components/Bottombar.astro";
 import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
-  showSidebar?: boolean;
+  showBottombar?: boolean;
 }
 
-const { title, description, showSidebar = true } = Astro.props;
+const { title, description, showBottombar = true } = Astro.props;
 const pageTitle = title ? `${title} - N的小屋` : "N的小屋";
 const pageDesc = description || "nothing for now";
 ---
@@ -35,7 +35,7 @@ const pageDesc = description || "nothing for now";
           <div class="lyear-article">
             <slot />
           </div>
-          <Sidebar />
+          <Bottombar />
         </div>
       </section>
     </div>

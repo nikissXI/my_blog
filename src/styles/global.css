@@ -30,7 +30,7 @@ a:focus {
   text-decoration: none;
 }
 
-/* ======== Left Sidebar ======== */
+/* ======== Left Bottombar ======== */
 .lyear-header {
   position: fixed;
   left: 0;
@@ -43,6 +43,7 @@ a:focus {
   background-position: center center;
   color: #fff;
   z-index: 100;
+  display: block;
 }
 
 .lyear-header-container {
@@ -60,17 +61,6 @@ a:focus {
   width: 100%;
 }
 
-.lyear-mask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  background-color: rgba(0, 0, 0, 0.25);
-  pointer-events: none;
-}
-
 .lyear-blogger {
   position: relative;
   font-weight: normal;
@@ -85,6 +75,10 @@ a:focus {
 }
 
 /* Hamburger */
+.lyear-header .navbar-toggle-checkbox {
+  display: none;
+}
+
 .lyear-header .navbar-toggler {
   position: relative;
   opacity: 0.8;
@@ -161,24 +155,12 @@ a:focus {
 }
 
 .lyear-sentence {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 2;
 }
 
 #navigation {
   display: block;
-}
-
-.lyear-header .nav-link {
-  color: rgba(255, 255, 255, 0.9);
-  padding: 0.5rem 0;
-  display: block;
-  transition: color 0.3s;
-}
-
-.lyear-header .nav-link:hover,
-.lyear-header .nav-link.active {
-  color: rgba(255, 255, 255, 1);
 }
 
 /* ======== Right Content ======== */
@@ -312,15 +294,27 @@ a:focus {
   height: auto;
 }
 
-/* ======== Sidebar Widgets ======== */
-.lyear-sidebar {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-
-.lyear-article {
+/* ======== Bottombar Widgets ======== */
+/* .lyear-article {
   flex: 0 0 75%;
   max-width: 75%;
+}
+
+.lyear-bottombar {
+  flex: 0 0 25%;
+  max-width: 25%;
+} */
+
+.lyear-article {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.lyear-bottombar {
+  padding-left: 0;
+  margin-top: 1.5rem;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 .widget {
@@ -446,11 +440,14 @@ a:focus {
   }
 
   #navigation {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
   }
 
-  #navigation.show {
-    display: block;
+  #navbar-toggle:checked ~ #navigation {
+    max-height: 500px;
+    transition: max-height 0.3s ease-in;
   }
 
   .lyear-wrapper {
@@ -462,19 +459,19 @@ a:focus {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) {
   .lyear-article {
     flex: 0 0 100%;
     max-width: 100%;
   }
 
-  .lyear-sidebar {
+  .lyear-bottombar {
     padding-left: 0;
     margin-top: 1.5rem;
     flex: 0 0 100%;
     max-width: 100%;
   }
-}
+} */
 
 /* @media only screen and (max-width: 991px) {
   .lyear-header .lyear-blogger {
@@ -518,7 +515,7 @@ a:focus {
   font-size: 16px;
 }
 
-/* ======== ICP Info Center ======== */
+/* ======== ICP备案信息 ======== */
 .icp-list li {
   display: flex;
   align-items: center;

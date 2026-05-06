@@ -1,5 +1,5 @@
 ---
-import { FRIEND_LINKS, ICP_INFO, BEIAN_INFO } from "../lib/constants";
+import { ICP_INFO, BEIAN_INFO } from "../lib/constants";
 import { formatDate } from "../lib/utils";
 import { getCollection } from "astro:content";
 
@@ -9,7 +9,7 @@ const hotPosts = allPosts
   .slice(0, 3);
 ---
 
-<div class="lyear-sidebar">
+<div class="lyear-bottombar">
   <!-- <aside class="widget widget-hot-posts">
       <div class="widget-title">热门文章</div>
       <ul>
@@ -21,21 +21,6 @@ const hotPosts = allPosts
         ))}
       </ul>
     </aside> -->
-
-  <aside class="widget widget-tag-cloud">
-    <div class="widget-title">关联网站</div>
-    <ul>
-      {
-        FRIEND_LINKS.map((link) => (
-          <li>
-            <a target="_blank" rel="noopener" href={link.url}>
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </aside>
 
   <aside class="widget widget-tag-cloud">
     <div class="widget-title">备案信息</div>

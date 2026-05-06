@@ -1,7 +1,5 @@
 ---
-import { CATEGORIES } from "../lib/constants";
-
-const categories = Object.entries(CATEGORIES);
+import { FRIEND_LINKS } from "../lib/constants";
 ---
 
 <style>
@@ -19,15 +17,6 @@ const categories = Object.entries(CATEGORIES);
   }
 
   #navigation {
-    width: 100%;
-  }
-
-  .navbar-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 1rem;
-    list-style: none;
     width: 100%;
   }
 
@@ -51,24 +40,50 @@ const categories = Object.entries(CATEGORIES);
   .lyear-search-form .form-control::placeholder {
     color: rgba(0, 0, 0, 0.5);
   }
+
+  .friend-links-section {
+    padding: 2rem 0rem;
+  }
+
+  .friend-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  .friend-links a {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgb(67 19 19 / 24%);
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .friend-links a:hover {
+    background: rgba(63, 125, 156, 0.586);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
 </style>
 
-<header class="lyear-header" style="background-image:url(/images/left-bg.jpg);">
+<header class="lyear-header" style="background-image:url(/images/bg.jpg);">
   <div class="lyear-header-container">
-    <div class="lyear-mask"></div>
     <h1 class="lyear-blogger">
       <a href="/">N的小屋</a>
     </h1>
     <nav class="navbar">
-      <button
-        class="navbar-toggler"
-        type="button"
-        aria-label="Toggle navigation"
-      >
+      <input type="checkbox" id="navbar-toggle" class="navbar-toggle-checkbox" />
+      <label for="navbar-toggle" class="navbar-toggler" aria-label="Toggle navigation">
         <div class="lyear-hamburger">
           <div class="hamburger-inner"></div>
         </div>
-      </button>
+      </label>
 
       <div id="navigation">
         <div class="profile-section">
@@ -80,25 +95,23 @@ const categories = Object.entries(CATEGORIES);
             alt="nikiss"
           />
           <div class="lyear-sentence">越努力，越幸运</div>
-          <hr />
         </div>
 
-        <ul class="navbar-nav">
-          {
-            categories.map(([id, name]) => (
-              <li>
-                <a class="nav-link" href={`/category/${id}`}>
-                  {name}
-                </a>
-              </li>
-            ))
-          }
-          <li>
-            <a class="nav-link" href="/about">关于我</a>
-          </li>
-        </ul>
+        <div class="friend-links-section">
+          <ul class="friend-links">
+            {
+              FRIEND_LINKS.map((link) => (
+                <li>
+                  <a target="_blank" rel="noopener" href={link.url}>
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
 
-        <div class="lyear-search-form-container">
+        <!-- <div class="lyear-search-form-container">
           <form class="lyear-search-form">
             <input
               type="text"
@@ -108,7 +121,7 @@ const categories = Object.entries(CATEGORIES);
               placeholder="搜索关键词"
             />
           </form>
-        </div>
+        </div> -->
       </div>
     </nav>
   </div>
