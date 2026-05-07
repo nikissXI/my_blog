@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import { formatDate } from "../lib/utils";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blogs", ({ data }) => !data.draft);
+  return blogs.map((post) => ({
+    params: { title: post.data.title },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={data.title} description={data.summary}>
+  <article class="lyear-arc">
+    <div class="arc-header">
+      <h2 class="arc-title">
+        {data.title}
+      </h2>
+      <ul class="arc-meta">
+        <li><i>📅</i> {formatDate(data.date)}</li>
+        {
+          data.keywords && (
+            <li>
+              <i>🏷️</i> {data.keywords}
+            </li>
+          )
+        }
+      </ul>
+    </div>
+
+    <div class="lyear-arc-detail">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

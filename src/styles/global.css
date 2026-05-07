@@ -44,6 +44,7 @@ a:focus {
   color: #fff;
   z-index: 100;
   display: block;
+  background-image: url(/images/pc-bg.jpg);
 }
 
 .lyear-header-container {
@@ -167,16 +168,10 @@ a:focus {
 .lyear-wrapper {
   margin-left: 260px;
   padding: 1.5rem 3rem 0;
-  min-height: 100vh;
 }
 
 .container {
   max-width: 1140px;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 /* ======== Article Cards ======== */
@@ -294,7 +289,7 @@ a:focus {
   height: auto;
 }
 
-/* ======== Bottombar Widgets ======== */
+/* ======== Bottombar 组件 ======== */
 /* .lyear-article {
   flex: 0 0 75%;
   max-width: 75%;
@@ -305,16 +300,13 @@ a:focus {
   max-width: 25%;
 } */
 
-.lyear-article {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
+/* .lyear-article {
+  max-height: 100vh;
+} */
 
 .lyear-bottombar {
   padding-left: 0;
   margin-top: 1.5rem;
-  flex: 0 0 100%;
-  max-width: 100%;
 }
 
 .widget {
@@ -323,12 +315,12 @@ a:focus {
 
 .widget-title {
   position: relative;
-  margin: 0 0 25px;
+  margin: 0 0 5px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.widget-title::before {
+/* .widget-title::before {
   content: "";
   display: block;
   position: absolute;
@@ -344,7 +336,7 @@ a:focus {
   position: relative;
   margin: 15px auto 25px 0;
   border-bottom: 1px solid #007bff;
-}
+} */
 
 .widget ul {
   list-style: none;
@@ -353,27 +345,26 @@ a:focus {
 }
 
 .widget ul li {
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  padding: 2px 0;
 }
 
 .widget ul li:last-child {
   border: 0;
 }
 
-.widget-hot-posts ul li {
+.widget-hot-blogs ul li {
   border-bottom: 1px solid rgba(238, 238, 238, 0.7);
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
 
-.widget-hot-posts ul li span {
+.widget-hot-blogs ul li span {
   display: block;
   margin-top: 5px;
   opacity: 0.7;
 }
 
-/* ======== Pagination ======== */
+/* ======== Pagination 分页组件 ======== */
 .pagination {
   list-style: none;
   display: flex;
@@ -421,6 +412,7 @@ a:focus {
     position: relative;
     width: 100%;
     height: auto;
+    background-image: url(/images/mobile-bg.jpg);
   }
 
   .lyear-header .navbar {
@@ -513,11 +505,4 @@ a:focus {
 
 .empty-state p {
   font-size: 16px;
-}
-
-/* ======== ICP备案信息 ======== */
-.icp-list li {
-  display: flex;
-  align-items: center;
-  gap: 4px;
 }

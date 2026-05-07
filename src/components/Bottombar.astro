@@ -1,41 +1,47 @@
 ---
-import { ICP_INFO, BEIAN_INFO } from "../lib/constants";
 import { formatDate } from "../lib/utils";
 import { getCollection } from "astro:content";
 
-const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+const allPosts = await getCollection("blogs", ({ data }) => !data.draft);
 const hotPosts = allPosts
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 ---
 
+<style>
+  .icp-list {
+    display: flex;
+    align-items: center;
+  }
+</style>
+
 <div class="lyear-bottombar">
-  <!-- <aside class="widget widget-hot-posts">
+  <!-- <aside class="widget widget-hot-blogs">
       <div class="widget-title">热门文章</div>
       <ul>
         {hotPosts.map((post) => (
           <li>
-            <a href={`/posts/${post.id}`}>{post.data.title}</a>
+            <a href={`/${post.id}`}>{post.data.title}</a>
             <span>{formatDate(post.data.date)}</span>
           </li>
         ))}
       </ul>
     </aside> -->
 
-  <aside class="widget widget-tag-cloud">
-    <div class="widget-title">备案信息</div>
-    <ul class="icp-list">
-      <li>
-        <img src="/images/ba.png" alt="备案" />
-        <a href={ICP_INFO.url} target="_blank" rel="noopener">
-          {ICP_INFO.name}
-        </a>
-      </li>
-      <li>
-        <a href={BEIAN_INFO.url} target="_blank" rel="noopener">
-          {BEIAN_INFO.name}
-        </a>
-      </li>
-    </ul>
+  <aside class="widget">
+    <div class="icp-list">
+      <img src="/images/ba.png" alt="备案" />
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">
+        粤ICP备2021084043号
+      </a>
+      &emsp;
+      <a
+        href="http://www.beian.gov.cn/portal/recordQuery"
+        target="_blank"
+        rel="noopener"
+      >
+        备案号44011102002838
+      </a>
+    </div>
   </aside>
 </div>

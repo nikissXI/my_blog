@@ -1,17 +1,7 @@
-export const SITE_DESCRIPTION = "nothing for now";
 export const PAGE_SIZE = 5;
 
 export const FRIEND_LINKS = [
-  { name: "github", url: "http://github.com/nikissXI" },
+  { name: "Github", url: "http://github.com/nikissXI" },
   { name: "B站", url: "https://space.bilibili.com/18052798" },
+  { name: "喵服联机", url: "https://nya.nikiss.top" },
 ];
-
-export const ICP_INFO = {
-  name: "粤ICP备2021084043号",
-  url: "https://beian.miit.gov.cn/",
-};
-
-export const BEIAN_INFO = {
-  name: "备案号 44011102002838",
-  url: "http://www.beian.gov.cn/portal/recordQuery",
-};
