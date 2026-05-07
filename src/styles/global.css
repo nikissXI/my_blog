@@ -36,7 +36,7 @@ a:focus {
   left: 0;
   top: 0;
   height: 100vh;
-  width: 260px;
+  width: 300px;
   background-repeat: no-repeat;
   background-color: #3d3d3d;
   background-size: cover;
@@ -166,7 +166,7 @@ a:focus {
 
 /* ======== Right Content ======== */
 .lyear-wrapper {
-  margin-left: 260px;
+  margin-left: 300px;
   padding: 1.5rem 3rem 0;
 }
 
@@ -176,16 +176,15 @@ a:focus {
 
 /* ======== Article Cards ======== */
 .lyear-arc {
-  margin: 0 0 45px;
+  margin: 0 0 25px;
 }
 
 .arc-header {
-  margin: 0 0 30px;
+  margin-top: 10px;
 }
 
 .arc-title {
-  font-size: 32px;
-  margin: 0 0 10px;
+  font-size: 30px;
 }
 
 .arc-title a {
@@ -211,15 +210,6 @@ a:focus {
 .arc-meta i {
   margin-right: 4px;
   vertical-align: middle;
-}
-
-.arc-synopsis {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.arc-synopsis p {
-  margin: 0 0 20px;
-  line-height: 1.7;
 }
 
 /* ======== Article Detail ======== */

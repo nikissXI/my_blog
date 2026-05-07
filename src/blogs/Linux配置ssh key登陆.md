@@ -3,7 +3,6 @@ title: "Linux配置ssh key登陆"
 category: "运维"
 keywords: "rsa,ssh"
 date: 2025-11-06
-summary: "Linux的ssh连接单使用密码连接安全性较低，若密码强度弱，容易被爆破，所以使用rsa证书连接会大大提高安全性"
 ---
 
 <p>Linux的ssh连接单使用密码连接安全性较低，若密码强度弱，容易被爆破，所以使用rsa证书连接会大大提高安全性</p><p>相比密码登陆，rsa登陆的安全性高很多，重点：防爆破<br/>首先在服务器生成公钥和秘钥</p><pre><code class="Bash"><pre>ssh-keygen -b 1024 -t ed25519 </pre></code></pre><p>-b 是加密位数&nbsp;&nbsp; -t 是类型<br/>然后有三个步骤(你懒的话直接回车三次完事)</p><pre><code class="Bash"><pre>Enter file in which to save the key (/root/.ssh/id_rsa):</pre></code></pre><p>第一步是确认文件保存目录，默认是~/.ssh，不改直接回车</p><pre><code class="Bash"><pre>Enter passphrase (empty for no passphrase):</pre></code></pre><p>第二步是让你输入口令，可以为空</p><pre><code class="Bash"><pre>Enter same passphrase again:</pre></code></pre><p>第三步是确认口令，第二步空的话继续空</p><p>生成完毕后~/.ssh文件夹里面就会有id_rsa和id_rsa.pub，前者是私钥，后者是公钥，私钥存到要远程连接的电脑<br/>然后切到~/.ssh目录，输入命令</p><pre><code class="Bash"><pre>cat id_rsa.pub &gt;&gt;/root/.ssh/authorized_keys</pre></code></pre><p>这一步其实就是把公钥重命名为authorized_keys</p><p>编辑文件/etc/sshd/sshd_config<br/>修改以下设置，没有的就加上</p><pre><code class="Bash"><pre>RSAAuthentication yesrnPubkeyAuthentication yesrnAuthorizedKeysFile .ssh/authorized_keys</pre></code></pre><p>第三行就是重命名后的文件路径</p><p>关闭密码验证，把这行注释掉就行</p><pre><code class="Bash"><pre>PasswordAuthentication no</pre></code></pre><pre><code class="Bash"><pre>systemctl restart ssh.service</pre></code></pre><p>客户端验证方式选公钥方法然后选择生成的私钥就可以连接了（如果设置了口令就把口令写上）</p>

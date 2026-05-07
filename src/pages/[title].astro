@@ -5,18 +5,18 @@ import { formatDate } from "../lib/utils";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blogs", ({ data }) => !data.draft);
-  return blogs.map((post) => ({
-    params: { title: post.data.title },
-    props: { post },
+  return blogs.map((blog) => ({
+    params: { title: blog.data.title },
+    props: { blog },
   }));
 }
 
-const { post } = Astro.props;
-const { data } = post;
-const { Content } = await render(post);
+const { blog } = Astro.props;
+const { data } = blog;
+const { Content } = await render(blog);
 ---
 
-<BaseLayout title={data.title} description={data.summary}>
+<BaseLayout title={data.title}>
   <article class="lyear-arc">
     <div class="arc-header">
       <h2 class="arc-title">

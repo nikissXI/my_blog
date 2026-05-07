@@ -1,4 +1,4 @@
-export const PAGE_SIZE = 5;
+export const PAGE_SIZE = 10;
 
 export const FRIEND_LINKS = [
   { name: "Github", url: "http://github.com/nikissXI" },

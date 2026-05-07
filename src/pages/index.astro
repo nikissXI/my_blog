@@ -24,7 +24,6 @@ if (keywordParam) {
     (blog) =>
       blog.data.title.toLowerCase().includes(kw) ||
       blog.data.keywords.toLowerCase().includes(kw) ||
-      blog.data.summary.toLowerCase().includes(kw) ||
       blog.data.category.toLowerCase().includes(kw),
   );
   pageTitle = `搜索: ${keywordParam}`;

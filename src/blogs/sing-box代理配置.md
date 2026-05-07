@@ -3,7 +3,6 @@ title: "sing-box代理配置"
 category: "运维"
 keywords: "sing-box 代理"
 date: 2026-04-06
-summary: "vless协议代理，基础配置文件"
 ---
 
 <pre><code class="JSON"><pre>{

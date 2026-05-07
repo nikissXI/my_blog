@@ -3,7 +3,6 @@ title: "wol唤醒配置"
 category: "技术杂谈"
 keywords: "wol"
 date: 2026-04-03
-summary: "wol避坑"
 ---
 
 <p>1、系统网卡配置里开启魔术包唤醒</p>
