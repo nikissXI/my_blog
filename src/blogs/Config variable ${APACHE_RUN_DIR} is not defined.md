@@ -1,6 +1,5 @@
 ---
 title: "Config variable ${APACHE_RUN_DIR} is not defined"
-category: "运维"
 keywords: "apache,环境变量"
 date: 2021-06-12
 ---

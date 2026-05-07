@@ -1,6 +1,5 @@
 ---
 title: "白嫖阿里云ssl证书"
-category: "技术杂谈"
 keywords: "https,ssl,阿里云"
 date: 2021-06-21
 ---

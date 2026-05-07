@@ -1,6 +1,5 @@
 ---
 title: "win11恢复旧版右键菜单"
-category: "运维"
 keywords: "win11"
 date: 2024-12-25
 ---

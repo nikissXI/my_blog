@@ -1,6 +1,5 @@
 ---
 title: "在vscode配置cmake环境"
-category: "技术杂谈"
 keywords: "vscode,cmake"
 date: 2021-06-12
 ---

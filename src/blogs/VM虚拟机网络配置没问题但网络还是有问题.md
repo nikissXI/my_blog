@@ -1,6 +1,5 @@
 ---
 title: "VM虚拟机网络配置没问题但网络还是有问题"
-category: "技术杂谈"
 keywords: "vm虚拟机"
 date: 2021-06-12
 ---

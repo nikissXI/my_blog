@@ -1,6 +1,5 @@
 ---
 title: "配置Edge浏览器burpsuite HTTPS抓包"
-category: "WEB渗透"
 keywords: "edge,burpsuite,抓包"
 date: 2021-07-28
 ---

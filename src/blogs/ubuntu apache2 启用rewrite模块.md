@@ -1,6 +1,5 @@
 ---
 title: "ubuntu apache2 启用rewrite模块"
-category: "运维"
 keywords: "apache,rewrite模块"
 date: 2021-06-21
 ---

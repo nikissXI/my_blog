@@ -1,6 +1,5 @@
 ---
 title: "Linux挂载vm的共享文件夹"
-category: "运维"
 keywords: "vm虚拟机"
 date: 2021-06-12
 ---

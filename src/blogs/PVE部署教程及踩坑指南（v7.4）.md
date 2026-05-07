@@ -1,6 +1,5 @@
 ---
 title: "PVE部署教程及踩坑指南（v7.4）"
-category: "运维"
 keywords: "PVE"
 date: 2023-05-15
 ---

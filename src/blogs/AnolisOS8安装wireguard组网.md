@@ -1,6 +1,5 @@
 ---
 title: "AnolisOS8安装wireguard组网"
-category: "运维"
 keywords: "wireguard AnolisOS"
 date: 2025-03-19
 ---

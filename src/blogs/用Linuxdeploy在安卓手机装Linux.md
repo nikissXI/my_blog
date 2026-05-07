@@ -1,6 +1,5 @@
 ---
 title: "用Linuxdeploy在安卓手机装Linux"
-category: "运维"
 keywords: "Linuxdeploy 安卓"
 date: 2023-02-28
 ---

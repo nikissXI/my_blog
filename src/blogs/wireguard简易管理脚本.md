@@ -1,6 +1,5 @@
 ---
 title: "wireguard简易管理脚本"
-category: "运维"
 keywords: "wireguard vpn"
 date: 2025-01-09
 ---

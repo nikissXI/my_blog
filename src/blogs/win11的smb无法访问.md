@@ -1,6 +1,5 @@
 ---
 title: "win11的smb无法访问"
-category: "运维"
 keywords: "smb"
 date: 2024-08-03
 ---

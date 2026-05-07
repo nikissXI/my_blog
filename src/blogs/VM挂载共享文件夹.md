@@ -1,6 +1,5 @@
 ---
 title: "VM挂载共享文件夹"
-category: "技术杂谈"
 keywords: "vm vmware"
 date: 2026-02-06
 ---

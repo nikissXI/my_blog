@@ -1,6 +1,5 @@
 ---
 title: "ubuntu22.04"
-category: "运维"
 keywords: "ssh"
 date: 2023-05-20
 ---

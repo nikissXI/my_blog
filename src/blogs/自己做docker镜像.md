@@ -1,6 +1,5 @@
 ---
 title: "自己做docker镜像"
-category: "运维"
 keywords: "docker"
 date: 2023-05-23
 ---

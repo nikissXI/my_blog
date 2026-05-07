@@ -1,6 +1,5 @@
 ---
 title: "Linux配置ssh key登陆"
-category: "运维"
 keywords: "rsa,ssh"
 date: 2025-11-06
 ---

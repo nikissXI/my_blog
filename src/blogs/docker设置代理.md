@@ -1,6 +1,5 @@
 ---
 title: "docker设置代理"
-category: "运维"
 keywords: "docker"
 date: 2023-05-18
 ---

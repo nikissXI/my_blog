@@ -1,6 +1,5 @@
 ---
 title: "解决sqli-labs不兼容高版本php"
-category: "技术杂谈"
 keywords: "sqli-labs,php,sql注入靶场"
 date: 2021-06-12
 ---

@@ -1,6 +1,5 @@
 ---
 title: "ubuntu系统apache2部署ssl证书"
-category: "运维"
 keywords: "ubuntu,apache2,ssl,https"
 date: 2021-06-22
 ---

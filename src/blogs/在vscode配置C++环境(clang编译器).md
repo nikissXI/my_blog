@@ -1,6 +1,5 @@
 ---
 title: "在vscode配置C++环境(clang编译器)"
-category: "技术杂谈"
 keywords: "vscode,c++,clang"
 date: 2021-06-12
 ---

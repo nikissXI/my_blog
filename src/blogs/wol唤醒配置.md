@@ -1,6 +1,5 @@
 ---
 title: "wol唤醒配置"
-category: "技术杂谈"
 keywords: "wol"
 date: 2026-04-03
 ---

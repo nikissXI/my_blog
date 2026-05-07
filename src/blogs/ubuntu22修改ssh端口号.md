@@ -1,6 +1,5 @@
 ---
 title: "ubuntu22修改ssh端口号"
-category: "运维"
 keywords: "ubuntu，ssh"
 date: 2023-05-21
 ---

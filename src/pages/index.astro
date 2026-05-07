@@ -28,8 +28,7 @@ if (keywordParam) {
   filteredBlogs = sortedBlogs.filter(
     (blog) =>
       blog.data.title.toLowerCase().includes(kw) ||
-      blog.data.keywords.toLowerCase().includes(kw) ||
-      blog.data.category.toLowerCase().includes(kw),
+      blog.data.keywords.toLowerCase().includes(kw)
   );
   pageTitle = `搜索: ${keywordParam}`;
 }

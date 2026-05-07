@@ -1,6 +1,5 @@
 ---
 title: "国内常用DNS地址"
-category: "运维"
 keywords: "DNS"
 date: 2022-11-26
 ---

@@ -1,6 +1,5 @@
 ---
 title: "思科路由器动态NAT配置"
-category: "路由交换"
 keywords: "NAT"
 date: 2021-09-22
 ---

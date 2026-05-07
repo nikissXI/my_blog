@@ -1,6 +1,5 @@
 ---
 title: "Linux中文异常"
-category: "运维"
 keywords: "Linux，中文"
 date: 2023-05-16
 ---

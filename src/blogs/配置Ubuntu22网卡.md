@@ -1,6 +1,5 @@
 ---
 title: "配置Ubuntu22网卡"
-category: "运维"
 keywords: "ubuntu"
 date: 2023-05-19
 ---

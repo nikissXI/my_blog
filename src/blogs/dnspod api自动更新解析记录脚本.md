@@ -1,6 +1,5 @@
 ---
 title: "dnspod api自动更新解析记录脚本"
-category: "技术杂谈"
 keywords: "ddns,dnspod"
 date: 2022-11-25
 ---

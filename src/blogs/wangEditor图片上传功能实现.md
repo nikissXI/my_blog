@@ -1,6 +1,5 @@
 ---
 title: "wangEditor图片上传功能实现"
-category: "技术杂谈"
 keywords: "wangEditor,php"
 date: 2021-06-24
 ---
