@@ -5,19 +5,24 @@ import Pagination from "../components/Pagination.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PAGE_SIZE } from "../lib/constants";
 
+// 获取url
+const url = new URL(Astro.request.url);
+// 获取页码
+const pageParam = Number(url.searchParams.get("page") || 1);
+const currentPage = pageParam > 0 ? pageParam : 1;
+
+// 获取所有文章
 const allBlogs = await getCollection("blogs", ({ data }) => !data.draft);
+// 对文章按时间倒序排序
 const sortedBlogs = allBlogs.sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 
-const url = new URL(Astro.request.url);
-const pageParam = Number(url.searchParams.get("page") || "1");
-const keywordParam = url.searchParams.get("keyword")?.trim() || "";
-const currentPage = pageParam > 0 ? pageParam : 1;
-
+// 过滤文章
 let filteredBlogs: CollectionEntry<"blogs">[] = sortedBlogs;
 let pageTitle = "";
-
+// 获取搜索关键词
+const keywordParam = url.searchParams.get("keyword")?.trim() || "";
 if (keywordParam) {
   const kw = keywordParam.toLowerCase();
   filteredBlogs = sortedBlogs.filter(
@@ -29,11 +34,16 @@ if (keywordParam) {
   pageTitle = `搜索: ${keywordParam}`;
 }
 
+// 分页处理
 const totalPages = Math.ceil(filteredBlogs.length / PAGE_SIZE);
+// 如果当前页面超过最大页数，重置为最大页数
 const safePage = Math.min(currentPage, Math.max(totalPages, 1));
+// 计算当前页起始索引
 const start = (safePage - 1) * PAGE_SIZE;
+// 获取当前页文章
 const pageBlogs = filteredBlogs.slice(start, start + PAGE_SIZE);
 
+// 构建基础url
 const keywordQuery = keywordParam
   ? `&keyword=${encodeURIComponent(keywordParam)}`
   : "";
