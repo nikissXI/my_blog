@@ -1,11 +1,11 @@
 ---
-import { formatDate } from "../lib/utils";
+// import { formatDate } from "../lib/utils";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blogs", ({ data }) => !data.draft);
-const hotPosts = allPosts
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+// const hotPosts = allPosts
+//   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+//   .slice(0, 3);
 ---
 
 <style>

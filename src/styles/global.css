@@ -13,6 +13,10 @@ body {
   line-height: 1.7;
   background-color: #fff;
   color: #4d5259;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
 
 a {
@@ -168,6 +172,7 @@ a:focus {
 .lyear-wrapper {
   margin-left: 300px;
   padding: 1.5rem 3rem 0;
+  flex: 1;
 }
 
 .container {
@@ -295,12 +300,14 @@ a:focus {
 } */
 
 .lyear-bottombar {
-  padding-left: 0;
-  margin-top: 1.5rem;
+  padding-left: 330px;
+  padding-right: 3rem;
+  padding-bottom: 1rem;
+  margin-top: auto;
 }
 
 .widget {
-  margin: 0 0 40px;
+  margin: 0 0 20px;
 }
 
 .widget-title {
@@ -434,6 +441,11 @@ a:focus {
 
   .lyear-wrapper {
     margin-left: 0;
+  }
+
+  .lyear-bottombar {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .profile-section {
