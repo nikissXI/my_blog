@@ -300,10 +300,13 @@ a:focus {
 } */
 
 .lyear-bottombar {
-  padding-left: 330px;
-  padding-right: 3rem;
-  padding-bottom: 1rem;
-  margin-top: auto;
+  margin-left: 300px;
+  padding-left: 1.5rem;
+}
+
+.icp-list {
+  display: flex;
+  justify-content: left;
 }
 
 .widget {
@@ -444,8 +447,12 @@ a:focus {
   }
 
   .lyear-bottombar {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin-left: 0rem;
+  }
+
+  .icp-list {
+    justify-content: center;
+    flex-direction: column;
   }
 
   .profile-section {

@@ -9,7 +9,7 @@ const allPosts = await getCollection("blogs", ({ data }) => !data.draft);
 ---
 
 <style>
-  .icp-list {
+  .icp-item {
     display: flex;
     align-items: center;
   }
@@ -30,11 +30,13 @@ const allPosts = await getCollection("blogs", ({ data }) => !data.draft);
 
   <aside class="widget">
     <div class="icp-list">
-      <img src="/images/ba.png" alt="备案" />
-      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">
-        粤ICP备2021084043号
-      </a>
-      &emsp;
+      <div class="icp-item">
+        <img src="/images/ba.png" alt="备案" />
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">
+          粤ICP备2021084043号&emsp;
+        </a>
+      </div>
+
       <a
         href="http://www.beian.gov.cn/portal/recordQuery"
         target="_blank"

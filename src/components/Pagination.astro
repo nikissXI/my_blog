@@ -1,50 +1,29 @@
 ---
-interface Props {
-  currentPage: number;
-  totalPages: number;
-  baseUrl: string;
-}
-
-const { currentPage, totalPages, baseUrl } = Astro.props;
-
-function buildUrl(page: number): string {
-  if (baseUrl.includes("?")) {
-    return `${baseUrl}&page=${page}`;
-  }
-  return `${baseUrl}?page=${page}`;
-}
+const { currentPage, totalPages } = Astro.props;
 ---
 
-{
-  totalPages > 1 && (
-    <div>
-      <ul class="pagination">
-        <li class="page-item page-link">共 {totalPages} 页</li>
+<div class="pagination-container">
+  <ul class="pagination">
+    <li class={`page-item disabled`}>
+      <a class="page-link" href={`/1`}>首页</a>
+    </li>
 
-        {currentPage > 1 && (
-          <li class="page-item">
-            <a class="page-link" href={buildUrl(1)}>
-              首页
+    {
+      Array.from({ length: totalPages })
+        .keys()
+        .map((i, index) => (
+          <li
+            class={`page-item ${i + 1 === currentPage ? "active" : ""} ${typeof i === "string" ? "ellipsis" : ""}`}
+          >
+            <a class="page-link" href={`/${i + 1}`}>
+              {i + 1}
             </a>
           </li>
-        )}
+        ))
+    }
 
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <li class={`page-item ${page === currentPage ? "active" : ""}`}>
-            <a class="page-link" href={buildUrl(page)}>
-              {page}
-            </a>
-          </li>
-        ))}
-
-        {currentPage < totalPages && (
-          <li class="page-item">
-            <a class="page-link" href={buildUrl(totalPages)}>
-              尾页
-            </a>
-          </li>
-        )}
-      </ul>
-    </div>
-  )
-}
+    <li class={`page-item disabled`}>
+      <a class="page-link" href={`/${totalPages}`}>尾页</a>
+    </li>
+  </ul>
+</div>
