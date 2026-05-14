@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ArticleCard from "../components/ArticleCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
 import { getCollection } from "astro:content";
-import { PAGE_SIZE } from "../lib/constants";
-import Pagination from "../components/Pagination.astro";
+import { PAGE_SIZE } from "../../lib/constants";
+import Pagination from "../../components/Pagination.astro";
 
 export async function getStaticPaths({
   paginate,

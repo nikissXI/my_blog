@@ -5,7 +5,7 @@ const { currentPage, totalPages } = Astro.props;
 <div class="pagination-container">
   <ul class="pagination">
     <li class={`page-item disabled`}>
-      <a class="page-link" href={`/1`}>首页</a>
+      <a class="page-link" href={`/page/1`}>首页</a>
     </li>
 
     {
@@ -15,7 +15,7 @@ const { currentPage, totalPages } = Astro.props;
           <li
             class={`page-item ${i + 1 === currentPage ? "active" : ""} ${typeof i === "string" ? "ellipsis" : ""}`}
           >
-            <a class="page-link" href={`/${i + 1}`}>
+            <a class="page-link" href={`/page/${i + 1}`}>
               {i + 1}
             </a>
           </li>
@@ -23,7 +23,7 @@ const { currentPage, totalPages } = Astro.props;
     }
 
     <li class={`page-item disabled`}>
-      <a class="page-link" href={`/${totalPages}`}>尾页</a>
+      <a class="page-link" href={`/page/${totalPages}`}>尾页</a>
     </li>
   </ul>
 </div>
