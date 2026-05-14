@@ -4,4 +4,15 @@ keywords: "windows"
 date: 2025-08-12
 ---
 
-<p>新建用户<br/><code>net user username password /add</code><br/>设置权限组<br/><code>net localgroup Administrators username /add</code><br/>密码永不过期<br/><code>Set-LocalUser -Name "username" -PasswordNeverExpires $true</code><br/>禁用默认用户<br/><code>net user Administrator /active:no</code></p>
+```powershell
+# 新建用户
+net user username password /add
+
+# 以下可选
+# 设置权限组
+net localgroup Administrators username /add
+# 密码永不过期
+Set-LocalUser -Name "username" -PasswordNeverExpires $true
+# 禁用默认用户
+net user Administrator /active:no
+```

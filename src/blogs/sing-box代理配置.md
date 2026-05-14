@@ -1,10 +1,13 @@
 ---
 title: "sing-box代理配置"
-keywords: "sing-box 代理"
+keywords: "sing-box,代理"
 date: 2026-04-06
 ---
 
-<pre><code class="JSON"><pre>{
+
+[https://sing-box.bid/wiki/vless.html](https://sing-box.bid/wiki/vless.html)
+```json
+{
   "log": {
     "level": "info"
   },
@@ -31,7 +34,7 @@ date: 2026-04-06
     {
       "type": "vless",
       "tag": "vless-out",
-      "server": "your_server_ip",
+      "server": your_server_ip,
       "server_port": your_server_port,
       "uuid": "uuid",
       "flow": "xtls-rprx-vision",
@@ -45,8 +48,8 @@ date: 2026-04-06
         },
         "reality": {
           "enabled": true,
-          "public_key": "your_public_key",
-          "short_id": "your_short_id"
+          "public_key": your_public_key,
+          "short_id": your_short_id
         }
       }
     }
@@ -63,4 +66,5 @@ date: 2026-04-06
       }
     ]
   }
-}</pre></code></pre>
+}
+```

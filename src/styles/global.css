@@ -186,6 +186,7 @@ a:focus {
 
 .arc-header {
   margin-top: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .arc-title {
@@ -222,13 +223,31 @@ a:focus {
   font-size: 16px;
 }
 
+.lyear-arc-detail a {
+  color: #2187c7;
+}
+
 .lyear-arc-detail h1,
 .lyear-arc-detail h2,
 .lyear-arc-detail h3,
 .lyear-arc-detail h4,
 .lyear-arc-detail h5,
 .lyear-arc-detail h6 {
-  margin: 30px 0 20px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lyear-arc-detail h1 {
+  font-size: 24px;
+}
+
+.lyear-arc-detail h2 {
+  font-size: 20px;
+}
+
+.lyear-arc-detail h2 {
+  font-size: 16px;
+  margin-top: 0;
 }
 
 .lyear-arc-detail h1:first-child,
@@ -240,18 +259,30 @@ a:focus {
   margin-top: 0;
 }
 
-.lyear-arc-detail p,
+.lyear-arc-detail strong {
+  color: #c24f4a;
+}
+
+.lyear-arc-detail p {
+  margin: 0 0 5px;
+  line-height: 1.7;
+}
+
 .lyear-arc-detail ul,
 .lyear-arc-detail ol {
-  margin: 0 0 10px;
-  line-height: 1.7;
+  padding-left: 1.4rem;
+}
+
+.lyear-arc-detail ul ::marker,
+.lyear-arc-detail ol ::marker {
+  font-weight: bold;
 }
 
 .lyear-arc-detail blockquote {
   font-size: 16px;
   position: relative;
   padding: 20px 20px 20px 40px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .lyear-arc-detail blockquote::after {
@@ -266,22 +297,37 @@ a:focus {
 
 .lyear-arc-detail pre {
   background: #f5f5f5;
-  padding: 15px;
+  padding: 10px;
   border-radius: 4px;
   overflow-x: auto;
-  margin-bottom: 20px;
-  font-size: 14px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .lyear-arc-detail code {
   font-family:
     "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 13px;
+  line-height: 1.4;
+  border-radius: 4px;
+  text-wrap: nowrap;
+}
+
+.lyear-arc-detail * code {
+  background: #ebebeb;
+  padding: 3px 5px;
+  margin: 0 3px;
+}
+
+.lyear-arc-detail pre code {
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 .lyear-arc-detail img {
-  max-width: 100%;
-  height: auto;
+  max-width: 80%;
 }
 
 /* ======== Bottombar 组件 ======== */
@@ -301,7 +347,7 @@ a:focus {
 
 .lyear-bottombar {
   margin-left: 300px;
-  padding-left: 1.5rem;
+  padding-left: 3rem;
 }
 
 .icp-list {
@@ -448,6 +494,7 @@ a:focus {
 
   .lyear-bottombar {
     margin-left: 0rem;
+    padding-left: 1rem;
   }
 
   .icp-list {
@@ -456,6 +503,9 @@ a:focus {
   }
 
   .profile-section {
+    max-width: 100%;
+  }
+  .lyear-arc-detail img {
     max-width: 100%;
   }
 }
