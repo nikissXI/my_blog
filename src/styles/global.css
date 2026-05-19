@@ -225,6 +225,7 @@ a:focus {
 
 .lyear-arc-detail a {
   color: #2187c7;
+  word-wrap: break-word;
 }
 
 .lyear-arc-detail h1,
@@ -486,6 +487,12 @@ a:focus {
   #navbar-toggle:checked ~ #navigation {
     max-height: 500px;
     transition: max-height 0.3s ease-in;
+    padding-bottom: 1rem;
+    overflow: visible;
+  }
+
+  .pagefind-ui {
+    padding: 0 3px !important;
   }
 
   .lyear-wrapper {

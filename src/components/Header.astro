@@ -1,5 +1,7 @@
 ---
 import { FRIEND_LINKS } from "../lib/constants";
+import Search from "astro-pagefind/components/Search.astro";
+import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 ---
 
 <style>
@@ -20,12 +22,6 @@ import { FRIEND_LINKS } from "../lib/constants";
     width: 100%;
   }
 
-  .lyear-search-form-container {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1rem;
-  }
-
   .lyear-search-form .form-control {
     border-radius: 100px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -42,7 +38,7 @@ import { FRIEND_LINKS } from "../lib/constants";
   }
 
   .friend-links-section {
-    padding: 2rem 0rem;
+    padding: 1rem 0rem;
   }
 
   .friend-links {
@@ -120,17 +116,14 @@ import { FRIEND_LINKS } from "../lib/constants";
           </ul>
         </div>
 
-        <div class="lyear-search-form-container">
-          <form class="lyear-search-form">
-            <input
-              type="text"
-              id="keyword"
-              name="keyword"
-              class="form-control"
-              placeholder="搜索关键词"
-            />
-          </form>
-        </div>
+        <Search
+          instance="search"
+          className="pagefind-ui"
+          searchboxOptions={{
+            placeholder: "搜索关键词",
+            "hide-shortcut": true,
+          }}
+        />
       </div>
     </nav>
   </div>
