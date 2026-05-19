@@ -1,14 +1,14 @@
-# Astro Starter Kit: Minimal
+# Astro 入门套件：极简版
 
 ```sh
 pnpm create astro@latest -- --template minimal
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> 🧑‍🚀 **经验丰富的宇航员？** 删除这个文件，尽情探索吧！
 
-## 🚀 Project Structure
+## 🚀 项目结构
 
-Inside of your Astro project, you'll see the following folders and files:
+在你的 Astro 项目中，你会看到以下文件夹和文件：
 
 ```text
 /
@@ -19,25 +19,25 @@ Inside of your Astro project, you'll see the following folders and files:
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro 会在 `src/pages/` 目录中查找 `.astro` 或 `.md` 文件。每个页面都会根据其文件名暴露为一个路由。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`src/components/` 没什么特别的，但我们喜欢把任何 Astro/React/Vue/Svelte/Preact 组件放在那里。
 
-Any static assets, like images, can be placed in the `public/` directory.
+任何静态资源，如图像，都可以放在 `public/` 目录中。
 
-## 🧞 Commands
+## 🧞 命令
 
-All commands are run from the root of the project, from a terminal:
+所有命令都从项目根目录在终端中运行：
 
-| Command                   | Action                                           |
+| 命令                   | 操作                                           |
 | :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`             | 安装依赖                            |
+| `pnpm dev`             | 在 `localhost:4321` 启动本地开发服务器      |
+| `pnpm build`           | 将你的生产站点构建到 `./dist/`          |
+| `pnpm preview`         | 在部署前本地预览你的构建     |
+| `pnpm astro ...`       | 运行 CLI 命令，如 `astro add`、`astro check` |
+| `pnpm astro -- --help` | 获取使用 Astro CLI 的帮助                     |
 
-## 👀 Want to learn more?
+## 👀 想了解更多？
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+欢迎查看 [我们的文档](https://docs.astro.build) 或加入我们的 [Discord 服务器](https://astro.build/chat)。
