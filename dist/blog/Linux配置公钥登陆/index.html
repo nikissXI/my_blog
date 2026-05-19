@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Linux配置公钥登陆 - N的小屋</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="nothing for now"><meta name="keywords" content="个人博客"><meta name="author" content="nikiss"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" href="/_astro/BaseLayout.Dai4pe3o.css"></head> <body> <header class="lyear-header" data-astro-cid-3ef6ksr2> <div class="lyear-header-container" data-astro-cid-3ef6ksr2> <h1 class="lyear-blogger" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>N的小屋</a> </h1> <nav class="navbar" data-astro-cid-3ef6ksr2> <input type="checkbox" id="navbar-toggle" class="navbar-toggle-checkbox" data-astro-cid-3ef6ksr2> <label for="navbar-toggle" class="navbar-toggler" aria-label="Toggle navigation" data-astro-cid-3ef6ksr2> <div class="lyear-hamburger" data-astro-cid-3ef6ksr2> <div class="hamburger-inner" data-astro-cid-3ef6ksr2></div> </div> </label> <div id="navigation" data-astro-cid-3ef6ksr2> <div class="profile-section" data-astro-cid-3ef6ksr2> <img class="profile-image" src="/images/touxiang.jpg" width="120" height="120" alt="nikiss" data-astro-cid-3ef6ksr2> <div class="lyear-sentence" data-astro-cid-3ef6ksr2>越努力，越幸运</div> </div> <div class="friend-links-section" data-astro-cid-3ef6ksr2> <ul class="friend-links" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a target="_blank" rel="noopener" href="http://github.com/nikissXI" data-astro-cid-3ef6ksr2> Github </a> </li><li data-astro-cid-3ef6ksr2> <a target="_blank" rel="noopener" href="https://space.bilibili.com/18052798" data-astro-cid-3ef6ksr2> B站 </a> </li><li data-astro-cid-3ef6ksr2> <a target="_blank" rel="noopener" href="https://nya.nikiss.top" data-astro-cid-3ef6ksr2> 喵服联机 </a> </li> </ul> </div> <pagefind-config instance="search" bundle-path="/pagefind/"></pagefind-config> <script type="module" src="/_astro/PagefindConfig.astro_astro_type_script_index_0_lang.CjHE0znR.js"></script> <pagefind-searchbox placeholder="搜索关键词" hide-shortcut="true" instance="search" class="pagefind-ui"></pagefind-searchbox> </div> </nav> </div> </header> <div class="lyear-wrapper"> <section> <div class="container"> <div class="lyear-article">  <article class="lyear-arc"> <div class="arc-header"> <h2 class="arc-title"> Linux配置公钥登陆 </h2> <ul class="arc-meta"> <li><i>📅</i> 2025年11月06日</li> <li> <main data-pagefind-body>🏷️ ssh</main> </li> </ul> </div> <div class="lyear-arc-detail"> <p>Linux的ssh连接单使用密码连接安全性较低，若密码强度弱，容易被爆破，所以使用公钥连接会大大提高安全性</p>
+<h1 id="生成密钥对">生成密钥对</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># -b 是加密位数 -t 是类型 -C 是注释，方便用于区分是哪个公钥</span></span>
+<span class="line"><span style="color:#B392F0">ssh-keygen</span><span style="color:#79B8FF"> -b</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> -t</span><span style="color:#9ECBFF"> ed25519</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "root@example.com"</span></span></code></pre>
+<p>然后有三个步骤(你懒的话直接回车三次完事)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 第一步是确认文件保存目录，默认是~/.ssh，不改直接回车</span></span>
+<span class="line"><span>Enter file in which to save the key (/root/.ssh/id_rsa):</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 第二步是让你输入口令，可以为空</span></span>
+<span class="line"><span>Enter passphrase (empty for no passphrase):</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 第三步是确认口令，第二步空的话继续空</span></span>
+<span class="line"><span>Enter same passphrase again:</span></span></code></pre>
+<h1 id="添加公钥到系统">添加公钥到系统</h1>
+<p>生成完毕后，在<code>~/.ssh</code>文件夹里面就会有<code>id_ed25519</code>和<code>id_ed25519.pub</code>，前者是私钥，后者是公钥，私钥存到要远程连接的电脑</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 把公钥追加到authorized_keys文件中</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> ~/.ssh/id_ed25519.pub</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /~/.ssh/authorized_keys</span></span></code></pre>
+<h1 id="关闭密码登录">关闭密码登录</h1>
+<p>编辑文件/etc/sshd/sshd_config</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 把PasswordAuthentication的注释取消，并改为no</span></span>
+<span class="line"><span>PasswordAuthentication no</span></span></code></pre>
+<h1 id="重启sshd服务">重启sshd服务</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> sshd</span></span></code></pre> </div> </article>  </div> </div> </section> </div> <div class="lyear-bottombar" data-astro-cid-tps6aj4h> <!-- <aside class="widget widget-hot-blogs">
+      <div class="widget-title">热门文章</div>
+      <ul>
+        {hotPosts.map((post) => (
+          <li>
+            <a href={`/${post.id}`}>{post.data.title}</a>
+            <span>{formatDate(post.data.date)}</span>
+          </li>
+        ))}
+      </ul>
+    </aside> --> <aside class="widget" data-astro-cid-tps6aj4h> <div class="icp-list" data-astro-cid-tps6aj4h> <div class="icp-item" data-astro-cid-tps6aj4h> <img src="/images/ba.png" alt="备案" data-astro-cid-tps6aj4h> <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" data-astro-cid-tps6aj4h>
+粤ICP备2021084043号&emsp;
+</a> </div> <a href="http://www.beian.gov.cn/portal/recordQuery" target="_blank" rel="noopener" data-astro-cid-tps6aj4h>
+备案号44011102002838
+</a> </div> </aside> </div> <script type="module">const e=document.querySelector(".navbar-toggler"),o=document.querySelector("#navigation");e&&o&&e.addEventListener("click",()=>{o.classList.toggle("show"),e.querySelector(".lyear-hamburger")?.classList.toggle("is-active")});const r=document.querySelector(".lyear-search-form");r?.addEventListener("submit",n=>{n.preventDefault();const t=r.querySelector("input");t?.value.trim()&&(window.location.href=`/?keyword=${encodeURIComponent(t.value.trim())}`)});</script></body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>用Linuxdeploy在安卓手机装Linux - N的小屋</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="nothing for now"><meta name="keywords" content="个人博客"><meta name="author" content="nikiss"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" href="/_astro/BaseLayout.Dai4pe3o.css"></head> <body> <header class="lyear-header" data-astro-cid-3ef6ksr2> <div class="lyear-header-container" data-astro-cid-3ef6ksr2> <h1 class="lyear-blogger" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>N的小屋</a> </h1> <nav class="navbar" data-astro-cid-3ef6ksr2> <input type="checkbox" id="navbar-toggle" class="navbar-toggle-checkbox" data-astro-cid-3ef6ksr2> <label for="navbar-toggle" class="navbar-toggler" aria-label="Toggle navigation" data-astro-cid-3ef6ksr2> <div class="lyear-hamburger" data-astro-cid-3ef6ksr2> <div class="hamburger-inner" data-astro-cid-3ef6ksr2></div> </div> </label> <div id="navigation" data-astro-cid-3ef6ksr2> <div class="profile-section" data-astro-cid-3ef6ksr2> <img class="profile-image" src="/images/touxiang.jpg" width="120" height="120" alt="nikiss" data-astro-cid-3ef6ksr2> <div class="lyear-sentence" data-astro-cid-3ef6ksr2>越努力，越幸运</div> </div> <div class="friend-links-section" data-astro-cid-3ef6ksr2> <ul class="friend-links" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a target="_blank" rel="noopener" href="http://github.com/nikissXI" data-astro-cid-3ef6ksr2> Github </a> </li><li data-astro-cid-3ef6ksr2> <a target="_blank" rel="noopener" href="https://space.bilibili.com/18052798" data-astro-cid-3ef6ksr2> B站 </a> </li><li data-astro-cid-3ef6ksr2> <a target="_blank" rel="noopener" href="https://nya.nikiss.top" data-astro-cid-3ef6ksr2> 喵服联机 </a> </li> </ul> </div> <pagefind-config instance="search" bundle-path="/pagefind/"></pagefind-config> <script type="module" src="/_astro/PagefindConfig.astro_astro_type_script_index_0_lang.CjHE0znR.js"></script> <pagefind-searchbox placeholder="搜索关键词" hide-shortcut="true" instance="search" class="pagefind-ui"></pagefind-searchbox> </div> </nav> </div> </header> <div class="lyear-wrapper"> <section> <div class="container"> <div class="lyear-article">  <article class="lyear-arc"> <div class="arc-header"> <h2 class="arc-title"> 用Linuxdeploy在安卓手机装Linux </h2> <ul class="arc-meta"> <li><i>📅</i> 2023年02月28日</li> <li> <main data-pagefind-body>🏷️ Linuxdeploy,安卓</main> </li> </ul> </div> <div class="lyear-arc-detail"> <p><strong>搞这个手机得先root了！</strong></p>
+<p>整这玩意就可以把手机当服务器跑了，还不会影响手机的正常使用，至于用来做什么就看个人了。</p>
+<h1 id="linux-deploy介绍">Linux Deploy介绍</h1>
+<p>Linux Deploy是一款运行在安卓平台上, 获取root权限利用chroot技术安装lxc版linux系统的软件。如果系统安卓版本较旧，可能需要安装busybox添加bin下的命令, 除此之外由于需要使用底层的指令运行脚本, 因此要求有root权限。Linux Deploy支持大部分主流Linux发行版。</p>
+<h1 id="linuxdeploy安装配置">Linuxdeploy安装配置</h1>
+<p>Linuxdeploy app下载链接，最新版本[2.6.0] - 2020-02-01，停更了<br>
+<a href="https://github.com/meefik/linuxdeploy/releases">https://github.com/meefik/linuxdeploy/releases</a></p>
+<h1 id="系统下载">系统下载</h1>
+<p>安装方法有三种，本文只讲内置仓库和rootfs.tar文件安装：</p>
+<ul>
+<li>在线安装，直接从app内置仓库拉取系统进行安装，安装简单，可以一键安装部署使用，但里面的系统比较旧并且选择少</li>
+<li>rootfs.tar安装（个人推荐），自行下载rootfs.tar文件进行安装，可以下载安装自己想要的系统，流行的Linux发行版都有，下面以下载ubuntu为例：  打开lxc镜像站 <a href="https://mirrors.bfsu.edu.cn/lxc-images/images/">https://mirrors.bfsu.edu.cn/lxc-images/images/</a> ，搜索ubuntu并打开，选择发行版（如jammy），架构，cloud，选择最新时间的（如果出问题可以试试之前的），点击 rootfs.tar.xz 下载</li>
+<li>Docker安装，还没试过，可以自己试试（手动狗头）</li>
+</ul>
+<h1 id="运行环境配置">运行环境配置</h1>
+<p>如果安卓版本比较旧或者软件版本较旧可能需要先使用busybox更新linux环境并在这里更新环境变量为busybox安装路径。<br>
+左上角选项 – 设置，把 锁定Wi-Fi、CPU唤醒、联网更新 勾上；开机自启动看自己的需求；telnet和httpd暂时用不到，开不开都行。</p>
+<h1 id="系统安装">系统安装</h1>
+<h2 id="在线安装">在线安装</h2>
+<ol>
+<li>发行版：自行选择</li>
+<li>架构：看你处理器架构，不清楚自己查</li>
+<li>发行版本：自行选择，这里显示的都是对应版本的代号，不清楚自己查</li>
+<li>源地址：国内源推荐，这里列举两个<br>
+Debian: <a href="http://mirrors.ustc.edu.cn/debian/">http://mirrors.ustc.edu.cn/debian/</a><br>
+Ubuntu: <a href="https://mirrors.bfsu.edu.cn/ubuntu-ports/">https://mirrors.bfsu.edu.cn/ubuntu-ports/</a></li>
+<li>安装类型：镜像文件，目录，分区，RAM(不建议)</li>
+<li>安装路径: 这里需要看安装类型确定, 这里给出三种:
+<ul>
+<li>镜像安装，就是系统镜像的路径，如<code>${EXTERNAL_STORAGE}/debian.img</code>，镜像建议分配不小于1024，因为这个镜像大小就是你系统可用空间大小，不够的话可以调，下面会说</li>
+<li>目录，最好选择data目录下的路径如<code>data/data/debian</code>, 如果没有该文件夹会自动创建该文件夹，系统可用空间与手机共享</li>
+<li>分区安装，需要设置安装路径。sd卡路径为<code>/dev/data/block/mmcblk(xpy)</code>, 其中 x 和 y 是数字。可以通过在本地终端或者adb shell进入终端使用命令<code>df -ah</code>查看挂载点, <code>ls /dev/block/mmcblk*</code>查看所有mmcblk这样的块设备</li>
+</ul>
+</li>
+<li>文件系统：ext4</li>
+<li>用户名：不要写root就行</li>
+<li>用户密码：要我帮你设置吗</li>
+<li>特权用户：不要动</li>
+<li>本地化：就是语言，如果要中文就选zh_CN.UTF-8，否则就保持C</li>
+<li>挂载点：将手机目录挂在载安装的Linux下某个目录,，类似docker的目录映射</li>
+<li>SSH：如果要用SSH连就勾上</li>
+<li>声音服务：随你</li>
+<li>GUI：看自己需求, 不是很流畅, 建议使用vnc + xfce</li>
+<li>回到主界面，点右上角的三个点，点击安装，等到出现 <code>&#x3C;&#x3C;&#x3C;deploy</code> 就是安装好了。看看输出的内容有没有出现failed，如果ssh服务failed了，就用telnet或httpd进去安装ssh，进去方法下面会说。</li>
+<li>安装完成后请先点击停止卸载容器, 然后再点击开始看到最后出现 <code>&#x3C;&#x3C;&#x3C;deploy</code> 并且没有 fail 即成功。此时可以通过 telnet 或者 SSH 登录容器。如果ssh启动失败，看本页下方的《无SSH进入系统》。</li>
+</ol>
+<br>
+<h2 id="rootfstar安装">rootfs.tar安装</h2>
+<ol>
+<li>发行版：rootfs.tar</li>
+<li>源地址：把下载的rootfs.tar文件改名为rootfs.tar，因为下载的文件名不一定叫这个，然后把它放到系统文件管理的根目录，因此这个位置就填${EXTERNAL_STORAGE}/rootfs.tar，你要是想放其他地方或改其他名字这里跟着改</li>
+<li>安装类型：镜像文件，目录，分区，RAM(不建议)</li>
+<li>安装路径: 这里需要看安装类型确定, 这里给出三种:
+<ul>
+<li>镜像安装，就是系统镜像的路径，如<code>${EXTERNAL_STORAGE}/debian.img</code>，镜像建议分配不小于1024，因为这个镜像大小就是你系统可用空间大小，不够的话可以调，下面会说。</li>
+<li>目录，最好选择data目录下的路径如<code>/data/debian</code>, 如果没有该文件夹会自动创建该文件夹，系统可用空间与手机共享。</li>
+<li>分区安装，需要设置安装路径。sd卡路径为<code>/dev/block/mmcblk(xpy)</code>, 其中 x 和 y 是数字。可以通过在本地终端或者adb shell进入终端使用命令<code>df -ah</code>查看挂载点, <code>ls /dev/block/mmcblk*</code>查看所有mmcblk这样的块设备</li>
+</ul>
+</li>
+<li>文件系统：ext4</li>
+<li>用户名：不要写root就行</li>
+<li>用户密码：要我帮你设置吗</li>
+<li>特权用户：不要动</li>
+<li>本地化：就是语言，如果要中文就选zh_CN.UTF-8，否则就保持C</li>
+<li>挂载点：将手机目录挂在载安装的Linux下某个目录,，类似docker的目录映射</li>
+<li>SSH：这个可以试试勾选，不过99%概率rootfs.tar包里是没有ssh的，因此用不了</li>
+<li>声音服务：随你</li>
+<li>GUI：不要选，因为包里100%没有</li>
+<li>回到主界面，点右上角的三个点，点击安装，等到出现 <code>&#x3C;&#x3C;&#x3C;deploy</code> 就是安装好了。看看输出的内容有没有出现failed，没有就可以进行连接了。连接方式看本页《无SSH进入系统》</li>
+</ol>
+<h1 id="进入手机终端">进入手机终端</h1>
+<p>左上角选项 – 设置，把TELNET或HTTP勾选，哪个方便用哪个，如果是开HTTP，左上角选项 – 终端，就会打开浏览器进去手机终端了。<br>
+进去后输入命令<code>su</code>，切换为root再操作</p>
+<h1 id="无ssh进入系统">无SSH进入系统</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 进入手机终端后，输入以下命令进入安装的系统</span></span>
+<span class="line"><span style="color:#B392F0">/data/user/0/ru.meefik.linuxdeploy/files/bin/linuxdeploy</span><span style="color:#9ECBFF"> shell</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> root</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 出现 root@localhost:~# 就对了</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Debian系的系统就输入以下命令安装ssh，怎么配置或其他系统自己解决啦</span></span>
+<span class="line"><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> openssh-server</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 然后可以在Linuxdeploy把SSH服务勾上了</span></span></code></pre>
+<h1 id="非root的tab补全无效">非root的Tab补全无效</h1>
+<p>软链接bash和sh, 或者网页搜索《切换默认sh为bash》</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ln</span><span style="color:#79B8FF"> -sf</span><span style="color:#9ECBFF"> /bin/bash</span><span style="color:#9ECBFF"> /bin/sh</span></span></code></pre>
+<h1 id="修复apt错误">修复apt错误</h1>
+<p>使用vi修改/etc/passwd中_apt的65535为3003<br>
+再输入 /_apt 再按enter, 再按<code>i</code>键变输入模式, 修改65535为3003, 再按ESC键最后<code>:wq</code>回车保存即可</p>
+<h1 id="修复dns解析错误">修复DNS解析错误</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 删除 resolv.conf</span></span>
+<span class="line"><span style="color:#B392F0">/etc/resolv.conf</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 重新创建resolv.conf并赋予755权限</span></span>
+<span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> /etc/resolv.conf</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 755</span><span style="color:#9ECBFF"> /etc/resolv.conf</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 最后停止容器再启动，看看DNS解析能用没，如果还不能用就再操作操作一遍</span></span></code></pre>
+<h1 id="改软件源为国内镜像站">改软件源为国内镜像站</h1>
+<p>北京外国语大学开源软件镜像站，用<code>ctrl+F</code>搜对应的系统名关键字就有了<br>
+<a href="https://mirrors.bfsu.edu.cn/help/">https://mirrors.bfsu.edu.cn/help/</a></p>
+<h1 id="用户无法使用ping">用户无法使用ping</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># root登陆后输入以下命令后重启</span></span>
+<span class="line"><span style="color:#B392F0">usermod</span><span style="color:#79B8FF"> -G</span><span style="color:#79B8FF"> 3003</span><span style="color:#9ECBFF"> root</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 其他的用户将命令里的root改为新创建的用户名即可</span></span></code></pre>
+<h1 id="tab补全不好使">Tab补全不好使</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Debian系的系统就输入以下命令安装补全，其他系统自己解决啦</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> bash-completion</span></span></code></pre>
+<h1 id="系统开机服务自启动">系统开机服务自启动</h1>
+<p>APP右下角设置，把初始化的启用勾上，其他不要动<br>
+然后进系统输入以下命令</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> /etc/rc.local</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 777</span><span style="color:#9ECBFF"> /etc/</span><span style="color:#9ECBFF"> rc.local</span></span></code></pre>
+<p>然后在里面写具体的命令就行</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 比如开机启动cron服务</span></span>
+<span class="line"><span style="color:#B392F0">/etc/init.d/cron</span><span style="color:#9ECBFF"> start</span></span></code></pre>
+<h1 id="手机锁屏后响应变卡">手机锁屏后响应变卡</h1>
+<p>进入手机的终端，输入su进root，然后输入以下命令，可以阻止手机进入低功耗模式</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> ld</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> /sys/power/wake_lock</span></span></code></pre>
+<h1 id="重启系统">重启系统</h1>
+<p>由于系统是在容器里面运行的，类似于docker，所以没法在内部重启的，只能在APP里点停止再启动<br>
+或者用以下命令直接重启手机，Linuxdeploy记得设置 开机自动启动</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">unchroot</span><span style="color:#9ECBFF"> am</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> -a</span><span style="color:#9ECBFF"> android.intent.action.REBOOT</span></span></code></pre>
+<h1 id="镜像文件磁盘空间扩容">镜像文件（磁盘空间）扩容</h1>
+<p>由于使用镜像文件方式安装，系统的磁盘空间就是img文件的大小，使用dd命令扩容即可<br>
+先进入手机终端，然后找到img文件的位置，就是安装位置<br>
+如果安装路径是<code>${EXTERNAL_STORAGE}/debian.img</code><br>
+那img文件绝对路径就是<code>/storage/emulated/0/linux/debian.img</code><br>
+可以先用cd命令看看是不是在那个地方<br>
+然后依次输入</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> if=/dev/zero</span><span style="color:#9ECBFF"> bs=</span><span style="color:#79B8FF">1048576</span><span style="color:#9ECBFF"> count=</span><span style="color:#79B8FF">1000</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /storage/emulated/0/debian.img</span></span>
+<span class="line"><span style="color:#B392F0">e2fsck</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> /storage/emulated/0/kali.img</span></span>
+<span class="line"><span style="color:#B392F0">resize2fs</span><span style="color:#9ECBFF"> /storage/emulated/0/kali.img</span></span></code></pre>
+<p>上面的代码依次输入完磁盘空间就会增加1G<br>
+可以自己改bs或count的值，查一下dd命令怎么用</p>
+<h1 id="外网怎么访问">外网怎么访问</h1>
+<p>可以在系统里装个frp或nps搞端口映射，或者整vpn组网，方法很多<br>
+这里就不展开了，自己去搜索吧</p>
+<h1 id="参考文献">参考文献</h1>
+<p><a href="https://www.bilibili.com/video/BV19S4y1j7Ba/?vd_source=17a331d2470839258ad5b683dc6ab0e0">MIUI12 MIUI13rnROOT 小米10安卓10-12均可_哔哩哔哩_bilibili</a><br>
+<a href="https://blog.csdn.net/qq_43509120/article/details/121429387">linux deploy安装指南(升级)_Xin@645的博客-CSDN博客_linux deploy 安装</a><br>
+<a href="https://github.com/meefik/linuxdeploy/issues/1101">How to speedrnup linux deploy? · Issue</a><br>
+<a href="https://mirrors.bfsu.edu.cn/help/debian/">debian | 镜像站使用帮助 | 北京外国语大学开源软件镜像站 |rnBFSU Open Source Mirror</a><br>
+<a href="https://blog.csdn.net/m0_59677938/article/details/124986115">Linux deploy重启的命令_linuxrndeploy 重启_m0_59677938的博客-CSDN博客</a><br>
+<a href="https://blog.csdn.net/weixin_73464466/article/details/126654730">linux deploy安装kali和磁盘扩容_linuxdeploy安装kali_褪色472的博客-CSDN博客</a></p> </div> </article>  </div> </div> </section> </div> <div class="lyear-bottombar" data-astro-cid-tps6aj4h> <!-- <aside class="widget widget-hot-blogs">
+      <div class="widget-title">热门文章</div>
+      <ul>
+        {hotPosts.map((post) => (
+          <li>
+            <a href={`/${post.id}`}>{post.data.title}</a>
+            <span>{formatDate(post.data.date)}</span>
+          </li>
+        ))}
+      </ul>
+    </aside> --> <aside class="widget" data-astro-cid-tps6aj4h> <div class="icp-list" data-astro-cid-tps6aj4h> <div class="icp-item" data-astro-cid-tps6aj4h> <img src="/images/ba.png" alt="备案" data-astro-cid-tps6aj4h> <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" data-astro-cid-tps6aj4h>
+粤ICP备2021084043号&emsp;
+</a> </div> <a href="http://www.beian.gov.cn/portal/recordQuery" target="_blank" rel="noopener" data-astro-cid-tps6aj4h>
+备案号44011102002838
+</a> </div> </aside> </div> <script type="module">const e=document.querySelector(".navbar-toggler"),o=document.querySelector("#navigation");e&&o&&e.addEventListener("click",()=>{o.classList.toggle("show"),e.querySelector(".lyear-hamburger")?.classList.toggle("is-active")});const r=document.querySelector(".lyear-search-form");r?.addEventListener("submit",n=>{n.preventDefault();const t=r.querySelector("input");t?.value.trim()&&(window.location.href=`/?keyword=${encodeURIComponent(t.value.trim())}`)});</script></body></html>
