@@ -3,15 +3,8 @@ import Header from "../components/Header.astro";
 import Bottombar from "../components/Bottombar.astro";
 import "../styles/global.css";
 
-interface Props {
-  title?: string;
-  description?: string;
-  showBottombar?: boolean;
-}
-
-const { title, description, showBottombar = true } = Astro.props;
-const pageTitle = title ? `${title} - N的小屋` : "N的小屋";
-const pageDesc = description || "nothing for now";
+const { title } = Astro.props;
+const pageTitle = title ? `${title}` : "N的小屋";
 ---
 
 <!doctype html>
@@ -21,14 +14,14 @@ const pageDesc = description || "nothing for now";
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{pageTitle}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={pageDesc} />
-    <meta name="keywords" content="个人博客" />
+    <meta name="keywords" content="nikiss" />
+    <meta name="description" content="nikiss的个人博客" />
     <meta name="author" content="nikiss" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   </head>
 
   <body>
-    <Header />
+    <Header pageTitle={pageTitle} />
     <div class="lyear-wrapper">
       <section>
         <div class="container">
@@ -51,13 +44,4 @@ const pageDesc = description || "nothing for now";
       toggler.querySelector(".lyear-hamburger")?.classList.toggle("is-active");
     });
   }
-
-  const form = document.querySelector(".lyear-search-form");
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const input = form.querySelector("input") as HTMLInputElement;
-    if (input?.value.trim()) {
-      window.location.href = `/?keyword=${encodeURIComponent(input.value.trim())}`;
-    }
-  });
 </script>

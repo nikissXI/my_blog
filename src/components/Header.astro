@@ -1,7 +1,7 @@
 ---
 import { FRIEND_LINKS } from "../lib/constants";
 import Search from "astro-pagefind/components/Search.astro";
-import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
+const { pageTitle } = Astro.props;
 ---
 
 <style>
@@ -71,9 +71,12 @@ import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 
 <header class="lyear-header">
   <div class="lyear-header-container">
-    <h1 class="lyear-blogger">
-      <a href="/">N的小屋</a>
+    <h1 style="display: none;">
+      {pageTitle}
     </h1>
+    <div class="lyear-blogger">
+      <a href="/">N的小屋</a>
+    </div>
     <nav class="navbar">
       <input
         type="checkbox"

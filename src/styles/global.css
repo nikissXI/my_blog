@@ -530,26 +530,6 @@ a:focus {
   }
 }
 
-/* @media only screen and (max-width: 1200px) {
-  .lyear-article {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .lyear-bottombar {
-    padding-left: 0;
-    margin-top: 1.5rem;
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-} */
-
-/* @media only screen and (max-width: 991px) {
-  .lyear-header .lyear-blogger {
-    width: 100%;
-  }
-} */
-
 @media only screen and (max-width: 768px) {
   .lyear-wrapper {
     padding: 1.5rem 1rem 0;

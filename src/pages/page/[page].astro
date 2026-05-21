@@ -27,7 +27,7 @@ export async function getStaticPaths({
 const { page } = Astro.props;
 ---
 
-<BaseLayout title={`第 ${page.currentPage} 页` || undefined}>
+<BaseLayout title={`第 ${page.currentPage} 页`} >
   {
     page.data.length === 0 ? (
       <div class="empty-state">
