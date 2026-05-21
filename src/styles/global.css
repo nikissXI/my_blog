@@ -446,11 +446,12 @@ a:focus {
   color: #4d5259;
 }
 
-/* ======== Search Page ======== */
-.search-highlight {
-  background-color: #fff3cd;
-  padding: 2px 4px;
-  border-radius: 2px;
+.pf-searchbox-input {
+  background-color: #01b7ff15 !important;
+}
+
+.pf-searchbox-input::placeholder {
+  color: rgba(255, 255, 255, 0.667) !important;
 }
 
 /* ======== Responsive ======== */
@@ -484,11 +485,23 @@ a:focus {
     transition: max-height 0.3s ease-out;
   }
 
+  @keyframes overflowToggle {
+    0% {
+      overflow: hidden;
+    }
+    99% {
+      overflow: hidden;
+    }
+    100% {
+      overflow: visible;
+    }
+  }
+
   #navbar-toggle:checked ~ #navigation {
     max-height: 500px;
     transition: max-height 0.3s ease-in;
     padding-bottom: 1rem;
-    overflow: visible;
+    animation: overflowToggle 1s ease-out forwards;
   }
 
   .pagefind-ui {
