@@ -4,8 +4,9 @@
 <span class="line"><span style="color:#6A737D"># 以下可选</span></span>
 <span class="line"><span style="color:#6A737D"># 设置权限组</span></span>
 <span class="line"><span style="color:#E1E4E8">net localgroup Administrators username </span><span style="color:#F97583">/</span><span style="color:#E1E4E8">add</span></span>
-<span class="line"><span style="color:#6A737D"># 密码永不过期</span></span>
+<span class="line"><span style="color:#6A737D"># 密码永不过期，二选一</span></span>
 <span class="line"><span style="color:#79B8FF">Set-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name </span><span style="color:#9ECBFF">"username"</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">PasswordNeverExpires </span><span style="color:#79B8FF">$true</span></span>
+<span class="line"><span style="color:#E1E4E8">net accounts </span><span style="color:#F97583">/</span><span style="color:#E1E4E8">maxpwage:unlimited</span></span>
 <span class="line"><span style="color:#6A737D"># 禁用默认用户</span></span>
 <span class="line"><span style="color:#E1E4E8">net user Administrator </span><span style="color:#F97583">/</span><span style="color:#E1E4E8">active:no</span></span></code></pre> </div> </article>  </div> </div> </section> </div> <div class="lyear-bottombar" data-astro-cid-tps6aj4h> <!-- <aside class="widget widget-hot-blogs">
       <div class="widget-title">热门文章</div>
